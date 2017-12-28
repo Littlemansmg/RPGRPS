@@ -12,6 +12,9 @@ namespace RoShamCSharp
 {
     public partial class frmMain : Form
     {
+        Random random = new Random();
+        aiGame game = new aiGame();
+
         public frmMain()
         {
             InitializeComponent();
@@ -19,7 +22,28 @@ namespace RoShamCSharp
 
         private void btnExit_Click(object sender, EventArgs e)
         {
+            //This is an exit button. 
             this.Close();
         }
+
+        private void btnAi_Click(object sender, EventArgs e)
+        {
+            string[] options = new string[] {"Rock", "Paper", "Scissors"};
+            string aiChoice = options[random.Next(0, 3)];
+            string a2Choice = options[random.Next(0, 3)];
+
+            lblP1pick.Text = "Player 1 pick: " + aiChoice;
+            lblP2pick.Text = "Player 2 pick: " + a2Choice;
+            lblWin.Text = game.pickWin(aiChoice, a2Choice);
+
+
+        }
+
+        private void lblP1pick_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
+    
 }
