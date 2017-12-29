@@ -13,7 +13,7 @@ namespace RoShamCSharp
     public partial class frmMain : Form
     {
         Random random = new Random();
-        aiGame game = new aiGame();
+        GameLogic game = new GameLogic();
 
         public frmMain()
         {
@@ -32,18 +32,11 @@ namespace RoShamCSharp
             string aiChoice = options[random.Next(0, 3)];
             string a2Choice = options[random.Next(0, 3)];
 
+            game.picPicture();
+
             lblP1pick.Text = "Player 1 pick: " + aiChoice;
             lblP2pick.Text = "Player 2 pick: " + a2Choice;
             lblWin.Text = game.pickWin(aiChoice, a2Choice);
-
-
         }
-
-        private void lblP1pick_Click(object sender, EventArgs e)
-        {
-
-        }
-    }
-
-    
+    } 
 }

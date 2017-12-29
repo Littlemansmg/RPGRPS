@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AiGame.cs" />
+    <Compile Include="GameLogic.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -79,6 +82,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p1Paper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p1Rock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p1Scissors.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p2Paper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p2Rock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\p2Scissors.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

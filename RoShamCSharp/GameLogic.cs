@@ -6,57 +6,57 @@ using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    public class aiGame
+    public class GameLogic: frmMain
     {
-        public string pickWin(string aichoice, string a2choice)
+        public string pickWin(string p1Option, string p2Option)
         {
-            string aiChoice = aichoice;
-            string a2Choice = a2choice;
+            //string p1Option = p1Option;
+            //string p2Option = p2Option;
 
 
-            switch (aiChoice.ToLower())
+            switch (p1Option.ToLower())
             {
                 case "rock":
-                    if (a2Choice.ToLower() == "paper")
+                    if (p2Option.ToLower() == "paper")
                     {
                         return "Player 2 Wins!";
                     }
-                    else if (aiChoice == a2Choice)
+                    else if (p1Option == p2Option)
                     {
                         return "It's a tie!";
                     }
                     else
                     {
-                        return "A winner is " + aiChoice + "!";
+                        return "A winner is " + p1Option + "!";
                     }
 
                     break;
                 case "paper":
-                    if (a2Choice.ToLower() == "scissors")
+                    if (p2Option.ToLower() == "scissors")
                     {
                         return "Player 2 Wins!";
                     }
-                    else if (aiChoice == a2Choice)
+                    else if (p1Option == p2Option)
                     {
                         return "It's a tie!";
                     }
                     else
                     {
-                        return "A winner is " + aiChoice + "!";
+                        return "A winner is " + p1Option + "!";
                     }
                     break;
                 case "scissors":
-                    if (a2Choice.ToLower() == "rock")
+                    if (p2Option.ToLower() == "rock")
                     {
                         return "Player 2 Wins!";
                     }
-                    else if (aiChoice == a2Choice)
+                    else if (p1Option == p2Option)
                     {
                         return "It's a tie!";
                     }
                     else
                     {
-                        return "A winner is " + aiChoice + "!";
+                        return "A winner is " + p1Option + "!";
                     }
                     break;
                 default:
@@ -64,5 +64,12 @@ namespace RoShamCSharp
                     break;
             }
         }
+
+        public void picPicture()
+        {
+            p1Pic.Image = RoShamCSharp.Properties.Resources.p1Paper;
+            p2Pic.Image = RoShamCSharp.Properties.Resources.p2Rock;
+        }
+
     }
 }

@@ -33,11 +33,15 @@
             this.lblWin = new System.Windows.Forms.Label();
             this.lblP2pick = new System.Windows.Forms.Label();
             this.lblP1pick = new System.Windows.Forms.Label();
+            this.p1Pic = new System.Windows.Forms.PictureBox();
+            this.p2Pic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.p1Pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p2Pic)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(84, 226);
+            this.btnExit.Location = new System.Drawing.Point(385, 362);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(89, 23);
             this.btnExit.TabIndex = 0;
@@ -47,7 +51,7 @@
             // 
             // btnAi
             // 
-            this.btnAi.Location = new System.Drawing.Point(84, 177);
+            this.btnAi.Location = new System.Drawing.Point(198, 346);
             this.btnAi.Name = "btnAi";
             this.btnAi.Size = new System.Drawing.Size(89, 23);
             this.btnAi.TabIndex = 1;
@@ -57,7 +61,7 @@
             // 
             // lblWin
             // 
-            this.lblWin.Location = new System.Drawing.Point(69, 122);
+            this.lblWin.Location = new System.Drawing.Point(172, 209);
             this.lblWin.Name = "lblWin";
             this.lblWin.Size = new System.Drawing.Size(128, 36);
             this.lblWin.TabIndex = 2;
@@ -65,7 +69,7 @@
             // 
             // lblP2pick
             // 
-            this.lblP2pick.Location = new System.Drawing.Point(146, 9);
+            this.lblP2pick.Location = new System.Drawing.Point(246, 9);
             this.lblP2pick.Name = "lblP2pick";
             this.lblP2pick.Size = new System.Drawing.Size(128, 36);
             this.lblP2pick.TabIndex = 3;
@@ -73,18 +77,35 @@
             // 
             // lblP1pick
             // 
-            this.lblP1pick.Location = new System.Drawing.Point(12, 9);
+            this.lblP1pick.Location = new System.Drawing.Point(25, 9);
             this.lblP1pick.Name = "lblP1pick";
             this.lblP1pick.Size = new System.Drawing.Size(128, 36);
             this.lblP1pick.TabIndex = 4;
             this.lblP1pick.Text = "Player 1 pick: ";
-            this.lblP1pick.Click += new System.EventHandler(this.lblP1pick_Click);
+            // 
+            // p1Pic
+            // 
+            this.p1Pic.Location = new System.Drawing.Point(12, 48);
+            this.p1Pic.Name = "p1Pic";
+            this.p1Pic.Size = new System.Drawing.Size(215, 120);
+            this.p1Pic.TabIndex = 5;
+            this.p1Pic.TabStop = false;
+            // 
+            // p2Pic
+            // 
+            this.p2Pic.Location = new System.Drawing.Point(249, 48);
+            this.p2Pic.Name = "p2Pic";
+            this.p2Pic.Size = new System.Drawing.Size(215, 120);
+            this.p2Pic.TabIndex = 6;
+            this.p2Pic.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(486, 397);
+            this.Controls.Add(this.p2Pic);
+            this.Controls.Add(this.p1Pic);
             this.Controls.Add(this.lblP1pick);
             this.Controls.Add(this.lblP2pick);
             this.Controls.Add(this.lblWin);
@@ -93,6 +114,8 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roshambo";
+            ((System.ComponentModel.ISupportInitialize)(this.p1Pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p2Pic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -104,6 +127,8 @@
         private System.Windows.Forms.Label lblWin;
         private System.Windows.Forms.Label lblP2pick;
         private System.Windows.Forms.Label lblP1pick;
+        protected System.Windows.Forms.PictureBox p1Pic;
+        protected System.Windows.Forms.PictureBox p2Pic;
     }
 }
 
