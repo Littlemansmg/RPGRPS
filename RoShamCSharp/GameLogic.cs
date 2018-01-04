@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    public class GameLogic: frmMain
+    public static class GameLogic
     {
-        public string pickWin(string p1Option, string p2Option)
+        public static string pickWin(string p1Option, string p2Option)
         {
             //string p1Option = p1Option;
             //string p2Option = p2Option;
@@ -65,11 +66,57 @@ namespace RoShamCSharp
             }
         }
 
-        public void picPicture()
+        public static Image p1Picture(string p1Option)
         {
-            p1Pic.Image = RoShamCSharp.Properties.Resources.p1Paper;
-            p2Pic.Image = RoShamCSharp.Properties.Resources.p2Rock;
+            switch (p1Option.ToLower())
+            {
+                case "rock":
+                {
+                    return RoShamCSharp.Properties.Resources.p1Rock;
+                    break;
+                }
+                case "paper":
+                {
+                    return RoShamCSharp.Properties.Resources.p1Paper;
+                    break;
+                }
+                case "scissors":
+                {
+                    return RoShamCSharp.Properties.Resources.p1Scissors;
+                    break;
+                }
+                default:
+                {
+                    return RoShamCSharp.Properties.Resources.p1Paper;
+                }
+            }
+
         }
 
+        public static Image p2Picture(string p2Option)
+        {
+            switch (p2Option.ToLower())
+            {
+                case "rock":
+                {
+                    return RoShamCSharp.Properties.Resources.p2Rock;
+                    break;
+                }
+                case "paper":
+                {
+                    return RoShamCSharp.Properties.Resources.p2Paper;
+                    break;
+                }
+                case "scissors":
+                {
+                    return RoShamCSharp.Properties.Resources.p2Scissors;
+                    break;
+                }
+                default:
+                {
+                    return RoShamCSharp.Properties.Resources.p2Paper;
+                }
+            }
+        }
     }
 }
