@@ -11,10 +11,6 @@ namespace RoShamCSharp
     {
         public static string pickWin(string p1Option, string p2Option)
         {
-            //string p1Option = p1Option;
-            //string p2Option = p2Option;
-
-
             switch (p1Option.ToLower())
             {
                 case "rock":

@@ -46,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameLogic.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GameLogic.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\RPGRPS_images\p2Scissors.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\RPGRPS_images\vs.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
