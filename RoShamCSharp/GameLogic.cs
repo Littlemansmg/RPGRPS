@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace RoShamCSharp
 {
     public static class GameLogic
-    {
+    {  
         public static string pickWin(string p1Option, string p2Option)
         {
             switch (p1Option.ToLower())
@@ -16,6 +16,7 @@ namespace RoShamCSharp
                 case "rock":
                     if (p2Option.ToLower() == "paper")
                     {
+                        
                         return "Player 2 Wins!";
                     }
                     else if (p1Option == p2Option)
@@ -24,7 +25,7 @@ namespace RoShamCSharp
                     }
                     else
                     {
-                        return "A winner is " + p1Option + "!";
+                        return "Player 1 Wins!";
                     }
 
                     break;
@@ -39,7 +40,7 @@ namespace RoShamCSharp
                     }
                     else
                     {
-                        return "A winner is " + p1Option + "!";
+                        return "Player 1 Wins!";
                     }
                     break;
                 case "scissors":
@@ -53,7 +54,7 @@ namespace RoShamCSharp
                     }
                     else
                     {
-                        return "A winner is " + p1Option + "!";
+                        return "Player 1 Wins!";
                     }
                     break;
                 default:
@@ -83,7 +84,7 @@ namespace RoShamCSharp
                 }
                 default:
                 {
-                    return RoShamCSharp.Properties.Resources.p1Paper;
+                    return null;
                 }
             }
 

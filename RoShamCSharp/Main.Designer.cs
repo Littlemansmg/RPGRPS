@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnExit = new System.Windows.Forms.Button();
             this.aiGame = new System.Windows.Forms.TabPage();
+            this.lblTab1Tie = new System.Windows.Forms.Label();
+            this.lblTab1Win2 = new System.Windows.Forms.Label();
+            this.lblTab1Win1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblTab1p2pick = new System.Windows.Forms.Label();
             this.picTab1p2 = new System.Windows.Forms.PictureBox();
@@ -40,8 +43,11 @@
             this.lblTab1p1pick = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.playerGame = new System.Windows.Forms.TabPage();
+            this.lblTab2Tie = new System.Windows.Forms.Label();
+            this.lblTab2Win2 = new System.Windows.Forms.Label();
+            this.lblTab2Win1 = new System.Windows.Forms.Label();
             this.cboPlayer2 = new System.Windows.Forms.ComboBox();
-            this.cboPlayer1 = new System.Windows.Forms.ComboBox();
+            this.cboTab2P1Pick = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lblTab2p2pick = new System.Windows.Forms.Label();
             this.picTab2p2 = new System.Windows.Forms.PictureBox();
@@ -50,6 +56,13 @@
             this.picTab2p1 = new System.Windows.Forms.PictureBox();
             this.lblTab2p1pick = new System.Windows.Forms.Label();
             this.battleGame = new System.Windows.Forms.TabPage();
+            this.cboTab3P1Pick = new System.Windows.Forms.ComboBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.picTab3p2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.picTab3p1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.aiGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab1p2)).BeginInit();
@@ -59,6 +72,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab2p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab2p1)).BeginInit();
+            this.battleGame.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTab3p2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTab3p1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
@@ -73,6 +90,9 @@
             // 
             // aiGame
             // 
+            this.aiGame.Controls.Add(this.lblTab1Tie);
+            this.aiGame.Controls.Add(this.lblTab1Win2);
+            this.aiGame.Controls.Add(this.lblTab1Win1);
             this.aiGame.Controls.Add(this.pictureBox1);
             this.aiGame.Controls.Add(this.lblTab1p2pick);
             this.aiGame.Controls.Add(this.picTab1p2);
@@ -87,6 +107,30 @@
             this.aiGame.TabIndex = 0;
             this.aiGame.Text = "Ai Game";
             this.aiGame.UseVisualStyleBackColor = true;
+            // 
+            // lblTab1Tie
+            // 
+            this.lblTab1Tie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab1Tie.Location = new System.Drawing.Point(223, 156);
+            this.lblTab1Tie.Name = "lblTab1Tie";
+            this.lblTab1Tie.Size = new System.Drawing.Size(100, 36);
+            this.lblTab1Tie.TabIndex = 10;
+            // 
+            // lblTab1Win2
+            // 
+            this.lblTab1Win2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab1Win2.Location = new System.Drawing.Point(325, 176);
+            this.lblTab1Win2.Name = "lblTab1Win2";
+            this.lblTab1Win2.Size = new System.Drawing.Size(128, 36);
+            this.lblTab1Win2.TabIndex = 9;
+            // 
+            // lblTab1Win1
+            // 
+            this.lblTab1Win1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab1Win1.Location = new System.Drawing.Point(6, 176);
+            this.lblTab1Win1.Name = "lblTab1Win1";
+            this.lblTab1Win1.Size = new System.Drawing.Size(128, 36);
+            this.lblTab1Win1.TabIndex = 8;
             // 
             // pictureBox1
             // 
@@ -120,7 +164,7 @@
             this.btnAi.Name = "btnAi";
             this.btnAi.Size = new System.Drawing.Size(89, 23);
             this.btnAi.TabIndex = 1;
-            this.btnAi.Text = "Run Ai game";
+            this.btnAi.Text = "Run Ai Game";
             this.btnAi.UseVisualStyleBackColor = true;
             this.btnAi.Click += new System.EventHandler(this.btnAi_Click);
             // 
@@ -165,8 +209,11 @@
             // 
             // playerGame
             // 
+            this.playerGame.Controls.Add(this.lblTab2Tie);
+            this.playerGame.Controls.Add(this.lblTab2Win2);
+            this.playerGame.Controls.Add(this.lblTab2Win1);
             this.playerGame.Controls.Add(this.cboPlayer2);
-            this.playerGame.Controls.Add(this.cboPlayer1);
+            this.playerGame.Controls.Add(this.cboTab2P1Pick);
             this.playerGame.Controls.Add(this.pictureBox2);
             this.playerGame.Controls.Add(this.lblTab2p2pick);
             this.playerGame.Controls.Add(this.picTab2p2);
@@ -181,6 +228,30 @@
             this.playerGame.TabIndex = 1;
             this.playerGame.Text = "1/2 Player Game";
             this.playerGame.UseVisualStyleBackColor = true;
+            // 
+            // lblTab2Tie
+            // 
+            this.lblTab2Tie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab2Tie.Location = new System.Drawing.Point(223, 156);
+            this.lblTab2Tie.Name = "lblTab2Tie";
+            this.lblTab2Tie.Size = new System.Drawing.Size(100, 36);
+            this.lblTab2Tie.TabIndex = 19;
+            // 
+            // lblTab2Win2
+            // 
+            this.lblTab2Win2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab2Win2.Location = new System.Drawing.Point(325, 176);
+            this.lblTab2Win2.Name = "lblTab2Win2";
+            this.lblTab2Win2.Size = new System.Drawing.Size(128, 36);
+            this.lblTab2Win2.TabIndex = 18;
+            // 
+            // lblTab2Win1
+            // 
+            this.lblTab2Win1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab2Win1.Location = new System.Drawing.Point(6, 176);
+            this.lblTab2Win1.Name = "lblTab2Win1";
+            this.lblTab2Win1.Size = new System.Drawing.Size(128, 36);
+            this.lblTab2Win1.TabIndex = 17;
             // 
             // cboPlayer2
             // 
@@ -197,19 +268,19 @@
             this.cboPlayer2.Size = new System.Drawing.Size(121, 21);
             this.cboPlayer2.TabIndex = 16;
             // 
-            // cboPlayer1
+            // cboTab2P1Pick
             // 
-            this.cboPlayer1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPlayer1.FormattingEnabled = true;
-            this.cboPlayer1.Items.AddRange(new object[] {
+            this.cboTab2P1Pick.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTab2P1Pick.FormattingEnabled = true;
+            this.cboTab2P1Pick.Items.AddRange(new object[] {
             "Pick Your Fighter",
             "Rock",
             "Paper",
             "Scissors"});
-            this.cboPlayer1.Location = new System.Drawing.Point(86, 11);
-            this.cboPlayer1.Name = "cboPlayer1";
-            this.cboPlayer1.Size = new System.Drawing.Size(121, 21);
-            this.cboPlayer1.TabIndex = 15;
+            this.cboTab2P1Pick.Location = new System.Drawing.Point(86, 11);
+            this.cboTab2P1Pick.Name = "cboTab2P1Pick";
+            this.cboTab2P1Pick.Size = new System.Drawing.Size(121, 21);
+            this.cboTab2P1Pick.TabIndex = 15;
             // 
             // pictureBox2
             // 
@@ -243,7 +314,7 @@
             this.btnGame.Name = "btnGame";
             this.btnGame.Size = new System.Drawing.Size(89, 23);
             this.btnGame.TabIndex = 8;
-            this.btnGame.Text = "Run game";
+            this.btnGame.Text = "Run Game";
             this.btnGame.UseVisualStyleBackColor = true;
             this.btnGame.Click += new System.EventHandler(this.btnGame_Click);
             // 
@@ -277,6 +348,13 @@
             // 
             // battleGame
             // 
+            this.battleGame.Controls.Add(this.cboTab3P1Pick);
+            this.battleGame.Controls.Add(this.pictureBox3);
+            this.battleGame.Controls.Add(this.label4);
+            this.battleGame.Controls.Add(this.picTab3p2);
+            this.battleGame.Controls.Add(this.button1);
+            this.battleGame.Controls.Add(this.picTab3p1);
+            this.battleGame.Controls.Add(this.label6);
             this.battleGame.Location = new System.Drawing.Point(4, 22);
             this.battleGame.Name = "battleGame";
             this.battleGame.Padding = new System.Windows.Forms.Padding(3);
@@ -284,6 +362,74 @@
             this.battleGame.TabIndex = 2;
             this.battleGame.Text = "Battle Game";
             this.battleGame.UseVisualStyleBackColor = true;
+            // 
+            // cboTab3P1Pick
+            // 
+            this.cboTab3P1Pick.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTab3P1Pick.FormattingEnabled = true;
+            this.cboTab3P1Pick.Items.AddRange(new object[] {
+            "Pick Your Fighter",
+            "Rock",
+            "Paper",
+            "Scissors"});
+            this.cboTab3P1Pick.Location = new System.Drawing.Point(86, 11);
+            this.cboTab3P1Pick.Name = "cboTab3P1Pick";
+            this.cboTab3P1Pick.Size = new System.Drawing.Size(121, 21);
+            this.cboTab3P1Pick.TabIndex = 27;
+            this.cboTab3P1Pick.SelectedIndexChanged += new System.EventHandler(this.cboTab3P1Pick_SelectedIndexChanged);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::RoShamCSharp.Properties.Resources.vs;
+            this.pictureBox3.Location = new System.Drawing.Point(223, 63);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(100, 90);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 26;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(322, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 18);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Player 2 pick: ";
+            // 
+            // picTab3p2
+            // 
+            this.picTab3p2.Location = new System.Drawing.Point(325, 53);
+            this.picTab3p2.Name = "picTab3p2";
+            this.picTab3p2.Size = new System.Drawing.Size(215, 120);
+            this.picTab3p2.TabIndex = 25;
+            this.picTab3p2.TabStop = false;
+            this.picTab3p2.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(223, 280);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Start Battle";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // picTab3p1
+            // 
+            this.picTab3p1.Location = new System.Drawing.Point(6, 53);
+            this.picTab3p1.Name = "picTab3p1";
+            this.picTab3p1.Size = new System.Drawing.Size(215, 120);
+            this.picTab3p1.TabIndex = 24;
+            this.picTab3p1.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(6, 14);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(74, 18);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Player 1 pick: ";
             // 
             // frmMain
             // 
@@ -293,7 +439,9 @@
             this.ClientSize = new System.Drawing.Size(578, 428);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roshambo";
@@ -307,6 +455,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab2p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab2p1)).EndInit();
+            this.battleGame.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTab3p2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTab3p1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,8 +484,21 @@
         private System.Windows.Forms.Label lblTab2Win;
         protected System.Windows.Forms.PictureBox picTab2p1;
         private System.Windows.Forms.Label lblTab2p1pick;
-        private System.Windows.Forms.ComboBox cboPlayer1;
+        private System.Windows.Forms.ComboBox cboTab2P1Pick;
         private System.Windows.Forms.ComboBox cboPlayer2;
+        private System.Windows.Forms.Label lblTab1Win2;
+        private System.Windows.Forms.Label lblTab1Win1;
+        private System.Windows.Forms.Label lblTab1Tie;
+        private System.Windows.Forms.Label lblTab2Tie;
+        private System.Windows.Forms.Label lblTab2Win2;
+        private System.Windows.Forms.Label lblTab2Win1;
+        private System.Windows.Forms.ComboBox cboTab3P1Pick;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label label4;
+        protected System.Windows.Forms.PictureBox picTab3p2;
+        private System.Windows.Forms.Button button1;
+        protected System.Windows.Forms.PictureBox picTab3p1;
+        private System.Windows.Forms.Label label6;
     }
 }
 

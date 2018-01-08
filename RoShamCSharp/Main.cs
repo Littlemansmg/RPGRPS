@@ -18,18 +18,54 @@ namespace RoShamCSharp
     {
         private Random random = new Random();
         private string[] options = { "Rock", "Paper", "Scissors" };
+        private int tab1win1count = 0, tab1win2count = 0, tab1tieCount = 0;
+        private int tab2win1count = 0, tab2win2count = 0, tab2tieCount = 0;
 
         private void frmMain_Load(object sender, EventArgs e)
         {
             //sets the combo boxes to a default value
             //Find another way to do this? 
-            cboPlayer1.SelectedIndex = 0;
+            cboTab2P1Pick.SelectedIndex = 0;
             cboPlayer2.SelectedIndex = 0;
+            cboTab3P1Pick.SelectedIndex = 0;
+
+            //removes border from win labels on all tabs
+            //assigns the default text for all win labels
+            //The border is only there so I can find it in designer.
+            #region tab1
+
+            lblTab1Win1.BorderStyle = 0;
+            lblTab1Win1.Text = "Player 1 Wins: " + tab1win1count;
+
+            lblTab1Win2.BorderStyle = 0;
+            lblTab1Win2.Text = "Player 2 Wins: " + tab1win2count;
+
+            lblTab1Tie.BorderStyle = 0;
+            lblTab1Tie.Text = "Ties: " + tab1tieCount;
+
+            #endregion
+
+            #region tab2
+
+            lblTab2Win1.BorderStyle = 0;
+            lblTab2Win1.Text = "Player 1 Wins: " + tab2win1count;
+
+            lblTab2Win2.BorderStyle = 0;
+            lblTab2Win2.Text = "Player 2 Wins: " + tab2win2count;
+
+            lblTab2Tie.BorderStyle = 0;
+            lblTab2Tie.Text = "Ties: " + tab2tieCount;
+
+            #endregion
+
         }
+
         public frmMain()
         {
             InitializeComponent();
         }
+
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -53,6 +89,23 @@ namespace RoShamCSharp
             //sets what the player picked and determines the winner
             lblTab1p1pick.Text = "Player 1 pick: " + aiChoice;
             lblTab1p2pick.Text = "Player 2 pick: " + a2Choice;
+
+            switch (GameLogic.pickWin(aiChoice, a2Choice))
+            {
+                case "Player 1 Wins!":
+                    tab1win1count++;
+                    lblTab1Win1.Text = "Player 1 Wins: " + tab1win1count;
+                    break;
+                case "Player 2 Wins!":
+                    tab1win2count++;
+                    lblTab1Win2.Text = "Player 2 Wins: " + tab1win2count;
+                    break;
+                default:
+                    tab1tieCount++;
+                    lblTab1Tie.Text = "Ties: " + tab1tieCount;
+                    break;
+            }
+
             lblTab1Win.Text = GameLogic.pickWin(aiChoice, a2Choice);
             lblTab1Win.Visible = true;
         }
@@ -68,14 +121,14 @@ namespace RoShamCSharp
         {
             string player1Choice;
             string player2Choice;
-            if (cboPlayer1.SelectedIndex == 0 || cboPlayer2.SelectedIndex == 0)
+            if (cboTab2P1Pick.SelectedIndex == 0 || cboPlayer2.SelectedIndex == 0)
             {
                 MessageBox.Show("You must select an option for player 1 and player 2.", "Error", MessageBoxButtons.OK,
                     MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
             else
             {
-                player1Choice = options[cboPlayer1.SelectedIndex - 1];
+                player1Choice = options[cboTab2P1Pick.SelectedIndex - 1];
                 if (cboPlayer2.SelectedIndex == 1)
                 {
                     player2Choice = options[random.Next(0, 3)];
@@ -91,6 +144,22 @@ namespace RoShamCSharp
                 picTab2p1.Image = GameLogic.p1Picture(player1Choice);
                 picTab2p2.Image = GameLogic.p2Picture(player2Choice);
 
+                switch (GameLogic.pickWin(player1Choice, player2Choice))
+                {
+                    case "Player 1 Wins!":
+                        tab2win1count++;
+                        lblTab2Win1.Text = "Player 1 Wins: " + tab2win1count;
+                        break;
+                    case "Player 2 Wins!":
+                        tab2win2count++;
+                        lblTab2Win2.Text = "Player 2 Wins: " + tab2win2count;
+                        break;
+                    default:
+                        tab2tieCount++;
+                        lblTab2Tie.Text = "Ties: " + tab2tieCount;
+                        break;
+                }
+
                 lblTab2Win.Text = GameLogic.pickWin(player1Choice, player2Choice);
                 lblTab2Win.Visible = true;
             }
@@ -98,6 +167,44 @@ namespace RoShamCSharp
 
         #endregion
 
+        //Battle game tab 
+        //***1 PERSON ONLY FOR CONVIENCE***
+        //Pokemon style battle between user and ai
 
+        #region Battle Game
+
+        private void cboTab3P1Pick_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string p1Option = "";
+            try
+            {
+                p1Option = options[cboTab3P1Pick.SelectedIndex - 1];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                //this catches if the user picks "pick your figher"
+                //in the combo box. 
+            }
+
+            finally
+            {
+                //when the exception goes off, this code will run and 
+                //set the image to nothing. 
+                if (picTab3p1.Image != null)
+                {
+                    picTab3p1.Image = null;
+                }
+            }
+            picTab3p1.Image = GameLogic.p1Picture(p1Option);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string aiChoice = options[random.Next(0, 3)];
+            
+
+        }
+
+        #endregion
     } 
 }
