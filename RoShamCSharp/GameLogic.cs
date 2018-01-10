@@ -111,7 +111,7 @@ namespace RoShamCSharp
                 }
                 default:
                 {
-                    return RoShamCSharp.Properties.Resources.p2Paper;
+                    return null;
                 }
             }
         }

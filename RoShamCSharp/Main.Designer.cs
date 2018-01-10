@@ -58,11 +58,11 @@
             this.battleGame = new System.Windows.Forms.TabPage();
             this.cboTab3P1Pick = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblTab3p2pick = new System.Windows.Forms.Label();
             this.picTab3p2 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.picTab3p1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnBattle = new System.Windows.Forms.Button();
             this.aiGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab1p2)).BeginInit();
@@ -146,7 +146,7 @@
             // 
             this.lblTab1p2pick.Location = new System.Drawing.Point(322, 14);
             this.lblTab1p2pick.Name = "lblTab1p2pick";
-            this.lblTab1p2pick.Size = new System.Drawing.Size(128, 36);
+            this.lblTab1p2pick.Size = new System.Drawing.Size(131, 36);
             this.lblTab1p2pick.TabIndex = 3;
             this.lblTab1p2pick.Text = "Player 2 pick: ";
             // 
@@ -348,11 +348,11 @@
             // 
             // battleGame
             // 
+            this.battleGame.Controls.Add(this.btnBattle);
             this.battleGame.Controls.Add(this.cboTab3P1Pick);
             this.battleGame.Controls.Add(this.pictureBox3);
-            this.battleGame.Controls.Add(this.label4);
+            this.battleGame.Controls.Add(this.lblTab3p2pick);
             this.battleGame.Controls.Add(this.picTab3p2);
-            this.battleGame.Controls.Add(this.button1);
             this.battleGame.Controls.Add(this.picTab3p1);
             this.battleGame.Controls.Add(this.label6);
             this.battleGame.Location = new System.Drawing.Point(4, 22);
@@ -388,13 +388,13 @@
             this.pictureBox3.TabIndex = 26;
             this.pictureBox3.TabStop = false;
             // 
-            // label4
+            // lblTab3p2pick
             // 
-            this.label4.Location = new System.Drawing.Point(322, 14);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 18);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Player 2 pick: ";
+            this.lblTab3p2pick.Location = new System.Drawing.Point(322, 14);
+            this.lblTab3p2pick.Name = "lblTab3p2pick";
+            this.lblTab3p2pick.Size = new System.Drawing.Size(155, 18);
+            this.lblTab3p2pick.TabIndex = 22;
+            this.lblTab3p2pick.Text = "Player 2 pick: ";
             // 
             // picTab3p2
             // 
@@ -403,17 +403,6 @@
             this.picTab3p2.Size = new System.Drawing.Size(215, 120);
             this.picTab3p2.TabIndex = 25;
             this.picTab3p2.TabStop = false;
-            this.picTab3p2.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(223, 280);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Start Battle";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // picTab3p1
             // 
@@ -430,6 +419,16 @@
             this.label6.Size = new System.Drawing.Size(74, 18);
             this.label6.TabIndex = 23;
             this.label6.Text = "Player 1 pick: ";
+            // 
+            // btnBattle
+            // 
+            this.btnBattle.Location = new System.Drawing.Point(223, 218);
+            this.btnBattle.Name = "btnBattle";
+            this.btnBattle.Size = new System.Drawing.Size(75, 23);
+            this.btnBattle.TabIndex = 28;
+            this.btnBattle.Text = "Start Battle";
+            this.btnBattle.UseVisualStyleBackColor = true;
+            this.btnBattle.Click += new System.EventHandler(this.btnBattle_Click);
             // 
             // frmMain
             // 
@@ -494,11 +493,11 @@
         private System.Windows.Forms.Label lblTab2Win1;
         private System.Windows.Forms.ComboBox cboTab3P1Pick;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTab3p2pick;
         protected System.Windows.Forms.PictureBox picTab3p2;
-        private System.Windows.Forms.Button button1;
         protected System.Windows.Forms.PictureBox picTab3p1;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnBattle;
     }
 }
 

@@ -65,7 +65,6 @@ namespace RoShamCSharp
             InitializeComponent();
         }
 
-        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -182,27 +181,17 @@ namespace RoShamCSharp
             }
             catch (IndexOutOfRangeException)
             {
-                //this catches if the user picks "pick your figher"
-                //in the combo box. 
+              
             }
 
-            finally
-            {
-                //when the exception goes off, this code will run and 
-                //set the image to nothing. 
-                if (picTab3p1.Image != null)
-                {
-                    picTab3p1.Image = null;
-                }
-            }
             picTab3p1.Image = GameLogic.p1Picture(p1Option);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBattle_Click(object sender, EventArgs e)
         {
             string aiChoice = options[random.Next(0, 3)];
-            
-
+            picTab3p2.Image = GameLogic.p2Picture(aiChoice);
+            lblTab3p2pick.Text = "Player 2 Pick:" + aiChoice;
         }
 
         #endregion
