@@ -16,11 +16,15 @@ namespace RoShamCSharp
 {
     public partial class frmMain : Form
     {
+        #region Vars
+
         private Random random = new Random();
         private string[] options = { "Rock", "Paper", "Scissors" };
         private int tab1win1count = 0, tab1win2count = 0, tab1tieCount = 0;
         private int tab2win1count = 0, tab2win2count = 0, tab2tieCount = 0;
 
+        #endregion
+        
         private void frmMain_Load(object sender, EventArgs e)
         {
             //sets the combo boxes to a default value
@@ -65,15 +69,22 @@ namespace RoShamCSharp
             InitializeComponent();
         }
 
-
+        /// <summary>
+        /// exit button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             //This is an exit button. 
             this.Close();
         }
 
-        //AiGame Tab
-        //This only plays the AI game, no player input required. 
+        /// <summary>
+        /// This only plays the AI game, no player input required.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region AiGame
         private void btnAi_Click(object sender, EventArgs e)
         {
@@ -111,10 +122,15 @@ namespace RoShamCSharp
 
         #endregion
 
-        //1/2 Player game tab
-        //This tab allows 1vai or 1v1 game. 
-        //Having the 1v1 really isn't that great because both 
-        //users can see the others pick, but I have it in because.
+        /// <summary>
+        /// This tab allows 1vai or 1v1 game.
+        /// </summary>
+        /// <remarks>
+        /// Having the 1v1 really isn't that great because both
+        /// users can see the others pick, but I have it in because.
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region PlayerGame
         private void btnGame_Click(object sender, EventArgs e)
         {
@@ -166,10 +182,14 @@ namespace RoShamCSharp
 
         #endregion
 
-        //Battle game tab 
-        //***1 PERSON ONLY FOR CONVIENCE***
-        //Pokemon style battle between user and ai
-
+        /// <summary>
+        /// Pokemon style battle between user and ai
+        /// </summary>
+        /// <remarks>
+        /// ***1 PERSON ONLY FOR CONVIENCE***
+        /// </remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         #region Battle Game
 
         private void cboTab3P1Pick_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,6 +212,10 @@ namespace RoShamCSharp
             string aiChoice = options[random.Next(0, 3)];
             picTab3p2.Image = GameLogic.p2Picture(aiChoice);
             lblTab3p2pick.Text = "Player 2 Pick:" + aiChoice;
+
+            Moves attack = new Moves();
+
+            int tak = attack.
         }
 
         #endregion

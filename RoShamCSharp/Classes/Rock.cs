@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    static class Rock
+    public class Rock
     {
+        Moves moves = new Moves();
+        #region Moves
+
+        public void getRockMoves()
+        {
+            //List<string> rockMoves
+        }
+
+        #endregion
     }
 }

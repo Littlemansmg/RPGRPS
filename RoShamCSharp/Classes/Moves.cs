@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    static class Moves
+    public class Moves
     {
+        public void tackle(int attack)
+        {
+            string name = "Tackle";
+            int damage = 4;
+            int accuracy = 80;
 
+        }
     }
 }
