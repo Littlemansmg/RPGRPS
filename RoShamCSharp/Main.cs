@@ -213,9 +213,12 @@ namespace RoShamCSharp
             picTab3p2.Image = GameLogic.p2Picture(aiChoice);
             lblTab3p2pick.Text = "Player 2 Pick:" + aiChoice;
 
-            Moves attack = new Moves();
+            object p1fighter
 
-            int tak = attack.
+            Moves move = new Moves();
+
+            int attack = move.tackle();
+
         }
 
         #endregion

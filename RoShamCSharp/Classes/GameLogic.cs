@@ -115,5 +115,9 @@ namespace RoShamCSharp
                 }
             }
         }
+
+        public static object getFighter(string option) {
+            
+        }
     }
 }
