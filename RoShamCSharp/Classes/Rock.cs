@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,14 +9,8 @@ namespace RoShamCSharp
 {
     public class Rock
     {
-        Moves moves = new Moves();
-        #region Moves
-
-        public void getRockMoves()
-        {
-            //List<string> rockMoves
-        }
-
-        #endregion
+        public int health = 50;
+        public int attack = 2;
+        public int defence = 3;
     }
 }

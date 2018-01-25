@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    static class Scissors
+    public class Scissors
     {
+        public int health = 45;
+        public int attack = 3;
+        public int defence = 3;
     }
 }

@@ -56,13 +56,22 @@
             this.picTab2p1 = new System.Windows.Forms.PictureBox();
             this.lblTab2p1pick = new System.Windows.Forms.Label();
             this.battleGame = new System.Windows.Forms.TabPage();
+            this.btnBattle = new System.Windows.Forms.Button();
             this.cboTab3P1Pick = new System.Windows.Forms.ComboBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.lblTab3p2pick = new System.Windows.Forms.Label();
             this.picTab3p2 = new System.Windows.Forms.PictureBox();
             this.picTab3p1 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnBattle = new System.Windows.Forms.Button();
+            this.grpMove = new System.Windows.Forms.GroupBox();
+            this.rdoTackle = new System.Windows.Forms.RadioButton();
+            this.rdoDefend = new System.Windows.Forms.RadioButton();
+            this.rdoHeal = new System.Windows.Forms.RadioButton();
+            this.rdoLolRip = new System.Windows.Forms.RadioButton();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.lblP1Health = new System.Windows.Forms.Label();
+            this.lblP2Health = new System.Windows.Forms.Label();
+            this.lblTab3win = new System.Windows.Forms.Label();
             this.aiGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab1p2)).BeginInit();
@@ -76,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab3p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab3p1)).BeginInit();
+            this.grpMove.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExit
@@ -348,6 +358,9 @@
             // 
             // battleGame
             // 
+            this.battleGame.Controls.Add(this.lblTab3win);
+            this.battleGame.Controls.Add(this.lblP2Health);
+            this.battleGame.Controls.Add(this.grpMove);
             this.battleGame.Controls.Add(this.btnBattle);
             this.battleGame.Controls.Add(this.cboTab3P1Pick);
             this.battleGame.Controls.Add(this.pictureBox3);
@@ -362,6 +375,16 @@
             this.battleGame.TabIndex = 2;
             this.battleGame.Text = "Battle Game";
             this.battleGame.UseVisualStyleBackColor = true;
+            // 
+            // btnBattle
+            // 
+            this.btnBattle.Location = new System.Drawing.Point(240, 218);
+            this.btnBattle.Name = "btnBattle";
+            this.btnBattle.Size = new System.Drawing.Size(75, 23);
+            this.btnBattle.TabIndex = 28;
+            this.btnBattle.Text = "Start Battle";
+            this.btnBattle.UseVisualStyleBackColor = true;
+            this.btnBattle.Click += new System.EventHandler(this.btnBattle_Click);
             // 
             // cboTab3P1Pick
             // 
@@ -420,15 +443,100 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Player 1 pick: ";
             // 
-            // btnBattle
+            // grpMove
             // 
-            this.btnBattle.Location = new System.Drawing.Point(223, 218);
-            this.btnBattle.Name = "btnBattle";
-            this.btnBattle.Size = new System.Drawing.Size(75, 23);
-            this.btnBattle.TabIndex = 28;
-            this.btnBattle.Text = "Start Battle";
-            this.btnBattle.UseVisualStyleBackColor = true;
-            this.btnBattle.Click += new System.EventHandler(this.btnBattle_Click);
+            this.grpMove.Controls.Add(this.lblP1Health);
+            this.grpMove.Controls.Add(this.btnConfirm);
+            this.grpMove.Controls.Add(this.rdoLolRip);
+            this.grpMove.Controls.Add(this.rdoHeal);
+            this.grpMove.Controls.Add(this.rdoDefend);
+            this.grpMove.Controls.Add(this.rdoTackle);
+            this.grpMove.Location = new System.Drawing.Point(9, 179);
+            this.grpMove.Name = "grpMove";
+            this.grpMove.Size = new System.Drawing.Size(212, 143);
+            this.grpMove.TabIndex = 29;
+            this.grpMove.TabStop = false;
+            this.grpMove.Text = "Pick Your Move";
+            this.grpMove.Visible = false;
+            // 
+            // rdoTackle
+            // 
+            this.rdoTackle.AutoSize = true;
+            this.rdoTackle.Location = new System.Drawing.Point(7, 20);
+            this.rdoTackle.Name = "rdoTackle";
+            this.rdoTackle.Size = new System.Drawing.Size(58, 17);
+            this.rdoTackle.TabIndex = 0;
+            this.rdoTackle.TabStop = true;
+            this.rdoTackle.Text = "Tackle";
+            this.rdoTackle.UseVisualStyleBackColor = true;
+            // 
+            // rdoDefend
+            // 
+            this.rdoDefend.AutoSize = true;
+            this.rdoDefend.Location = new System.Drawing.Point(7, 43);
+            this.rdoDefend.Name = "rdoDefend";
+            this.rdoDefend.Size = new System.Drawing.Size(60, 17);
+            this.rdoDefend.TabIndex = 1;
+            this.rdoDefend.TabStop = true;
+            this.rdoDefend.Text = "Defend";
+            this.rdoDefend.UseVisualStyleBackColor = true;
+            // 
+            // rdoHeal
+            // 
+            this.rdoHeal.AutoSize = true;
+            this.rdoHeal.Location = new System.Drawing.Point(6, 66);
+            this.rdoHeal.Name = "rdoHeal";
+            this.rdoHeal.Size = new System.Drawing.Size(47, 17);
+            this.rdoHeal.TabIndex = 2;
+            this.rdoHeal.TabStop = true;
+            this.rdoHeal.Text = "Heal";
+            this.rdoHeal.UseVisualStyleBackColor = true;
+            // 
+            // rdoLolRip
+            // 
+            this.rdoLolRip.AutoSize = true;
+            this.rdoLolRip.Location = new System.Drawing.Point(6, 89);
+            this.rdoLolRip.Name = "rdoLolRip";
+            this.rdoLolRip.Size = new System.Drawing.Size(64, 17);
+            this.rdoLolRip.TabIndex = 3;
+            this.rdoLolRip.TabStop = true;
+            this.rdoLolRip.Text = "Give Up";
+            this.rdoLolRip.UseVisualStyleBackColor = true;
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(16, 112);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.TabIndex = 30;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // lblP1Health
+            // 
+            this.lblP1Health.Location = new System.Drawing.Point(113, 39);
+            this.lblP1Health.Name = "lblP1Health";
+            this.lblP1Health.Size = new System.Drawing.Size(75, 21);
+            this.lblP1Health.TabIndex = 31;
+            this.lblP1Health.Text = "Health: ";
+            // 
+            // lblP2Health
+            // 
+            this.lblP2Health.Location = new System.Drawing.Point(388, 218);
+            this.lblP2Health.Name = "lblP2Health";
+            this.lblP2Health.Size = new System.Drawing.Size(75, 21);
+            this.lblP2Health.TabIndex = 32;
+            this.lblP2Health.Text = "Health: ";
+            // 
+            // lblTab3win
+            // 
+            this.lblTab3win.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTab3win.Location = new System.Drawing.Point(227, 245);
+            this.lblTab3win.Name = "lblTab3win";
+            this.lblTab3win.Size = new System.Drawing.Size(143, 101);
+            this.lblTab3win.TabIndex = 33;
+            this.lblTab3win.Text = "88888";
             // 
             // frmMain
             // 
@@ -458,6 +566,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab3p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picTab3p1)).EndInit();
+            this.grpMove.ResumeLayout(false);
+            this.grpMove.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -498,6 +608,15 @@
         protected System.Windows.Forms.PictureBox picTab3p1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnBattle;
+        private System.Windows.Forms.GroupBox grpMove;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.RadioButton rdoLolRip;
+        private System.Windows.Forms.RadioButton rdoHeal;
+        private System.Windows.Forms.RadioButton rdoDefend;
+        private System.Windows.Forms.RadioButton rdoTackle;
+        private System.Windows.Forms.Label lblP1Health;
+        private System.Windows.Forms.Label lblP2Health;
+        private System.Windows.Forms.Label lblTab3win;
     }
 }
 

@@ -9,14 +9,13 @@ namespace RoShamCSharp
 {
     public class Moves
     {
-        Random accRandom = new Random();
+        Random random = new Random();
         public int tackle()
         {
             //string name = "Tackle";
-            int damage = 4;
+            int damage = random.Next(3,10) ;
             int accuracy = 80;
-
-            int hit = accRandom.Next(0, 100);
+            int hit = random.Next(0, 100);
 
             if (hit < accuracy)
             {
@@ -26,9 +25,21 @@ namespace RoShamCSharp
             {
                 return 0;
             }
+        }
 
+        public int defence()
+        {
+            return 1;
+        }
 
+        public int heal()
+        {
+            return 1;
+        }
 
+        public int giveup()
+        {
+            return 0; 
         }
     }
 }

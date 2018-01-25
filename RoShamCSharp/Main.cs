@@ -19,9 +19,14 @@ namespace RoShamCSharp
         #region Vars
 
         private Random random = new Random();
+        private Moves moves = new Moves();
+        public int[] p1Fighter = new int[3];
+        public int[] p2Fighter = new int[3];
         private string[] options = { "Rock", "Paper", "Scissors" };
         private int tab1win1count = 0, tab1win2count = 0, tab1tieCount = 0;
         private int tab2win1count = 0, tab2win2count = 0, tab2tieCount = 0;
+        private string aiChoice = "";
+        private string p1Option = "";
 
         #endregion
         
@@ -89,7 +94,7 @@ namespace RoShamCSharp
         private void btnAi_Click(object sender, EventArgs e)
         {
             //vars needed to run the game
-            string aiChoice = options[random.Next(0, 3)];
+            aiChoice = options[random.Next(0, 3)];
             string a2Choice = options[random.Next(0, 3)];
 
             //determines picture based on what the AI picked
@@ -194,31 +199,94 @@ namespace RoShamCSharp
 
         private void cboTab3P1Pick_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string p1Option = "";
             try
             {
                 p1Option = options[cboTab3P1Pick.SelectedIndex - 1];
             }
             catch (IndexOutOfRangeException)
             {
-              
             }
-
-            picTab3p1.Image = GameLogic.p1Picture(p1Option);
+            if (cboTab3P1Pick.SelectedIndex == 0)
+            {
+                picTab3p1.Visible = false;
+                picTab3p1.Image = null;
+            }
+            else
+            {
+                picTab3p1.Image = GameLogic.p1Picture(p1Option);
+                picTab3p1.Visible = true;
+            }
+            
         }
-
+        
         private void btnBattle_Click(object sender, EventArgs e)
         {
-            string aiChoice = options[random.Next(0, 3)];
+            if (picTab3p1.Image == null)
+            {
+                return;
+            }
+
+            cboTab3P1Pick.Enabled = false;
+            btnBattle.Visible = false;
+            grpMove.Visible = true;
+            aiChoice = options[random.Next(0, 3)];
             picTab3p2.Image = GameLogic.p2Picture(aiChoice);
-            lblTab3p2pick.Text = "Player 2 Pick:" + aiChoice;
+            lblTab3p2pick.Text = "Player 2 Pick: " + aiChoice;
 
-            object p1fighter
+            //[health, attack, defence]
+            p1Fighter = GameLogic.getFighter(p1Option);
+            p2Fighter = GameLogic.getFighter(aiChoice);
 
-            Moves move = new Moves();
+            lblP1Health.Text = "Health: " + p1Fighter[0];
+            lblP2Health.Text = "Health: " + p2Fighter[0];
 
-            int attack = move.tackle();
+            lblTab3win.Visible = false;
 
+
+        }
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            int[] moveOption =
+            {
+                moves.tackle(),
+                moves.defence(),
+                moves.heal(),
+                moves.giveup()
+            };
+
+            if (checkMove() == 0)
+            {
+                p2Fighter[0] = p2Fighter[0] - moveOption[0];
+                lblP2Health.Text = "Health: " + p2Fighter[0];
+                lblTab3win.Text = GameLogic.battleWin(p1Fighter[0], p2Fighter[0]);
+                if (!string.IsNullOrEmpty(lblTab3win.Text))
+                {
+                    lblTab3win.Visible = true;
+                    grpMove.Visible = false;
+                    btnBattle.Visible = true;
+                    cboTab3P1Pick.Enabled = true;
+                }
+            }
+        }
+
+        private int checkMove()
+        {
+            if (rdoTackle.Checked)
+            {
+                return 0;
+            }
+            else if (rdoDefend.Checked)
+            {
+                return 1;
+            }
+            else if (rdoHeal.Checked)
+            {
+                return 2;
+            }
+            else
+            {
+                return 3;
+            }
         }
 
         #endregion

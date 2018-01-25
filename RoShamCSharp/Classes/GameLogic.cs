@@ -27,8 +27,6 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
-
-                    break;
                 case "paper":
                     if (p2Option.ToLower() == "scissors")
                     {
@@ -42,7 +40,6 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
-                    break;
                 case "scissors":
                     if (p2Option.ToLower() == "rock")
                     {
@@ -56,10 +53,8 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
-                    break;
                 default:
                     return "Something went wrong here.";
-                    break;
             }
         }
 
@@ -116,8 +111,58 @@ namespace RoShamCSharp
             }
         }
 
-        public static object getFighter(string option) {
-            
+        public static int[] getFighter(string option) {
+            switch (option.ToLower())
+            {
+                case "rock":
+                    Rock rock = new Rock();
+                    int[] rockstat = new int[]
+                    {
+                        rock.health,
+                        rock.attack,
+                        rock.defence
+                    };
+                    return rockstat;
+                    break;
+
+                case "paper":
+                    Paper paper = new Paper();
+                    int[] papstat = new int[]
+                    {
+                        paper.health,
+                        paper.attack,
+                        paper.defence
+                    };
+                    return papstat;
+                    break;
+                case "scissors":
+                    Scissors scissors = new Scissors();
+                    int[] scissstat = new int[]
+                    {
+                        scissors.health,
+                        scissors.attack,
+                        scissors.defence
+                    };
+                    return scissstat;
+                default:
+                    return null;
+            }
+        }
+
+        public static string battleWin(int p1Health, int p2Health)
+        {
+            if (p1Health <= 0)
+            {
+                return "Player 2 wins!";
+            }
+            else if (p2Health <= 0)
+            {
+                return "Player 1 wins!";
+            }
+            else
+            {
+                return "";
+            }
         }
     }
 }
