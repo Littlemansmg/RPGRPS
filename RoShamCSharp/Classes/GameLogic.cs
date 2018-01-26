@@ -16,7 +16,6 @@ namespace RoShamCSharp
                 case "rock":
                     if (p2Option.ToLower() == "paper")
                     {
-                        
                         return "Player 2 Wins!";
                     }
                     else if (p1Option == p2Option)
@@ -27,6 +26,7 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
+
                 case "paper":
                     if (p2Option.ToLower() == "scissors")
                     {
@@ -40,6 +40,7 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
+
                 case "scissors":
                     if (p2Option.ToLower() == "rock")
                     {
@@ -53,6 +54,7 @@ namespace RoShamCSharp
                     {
                         return "Player 1 Wins!";
                     }
+
                 default:
                     return "Something went wrong here.";
             }
@@ -64,25 +66,21 @@ namespace RoShamCSharp
             {
                 case "rock":
                 {
-                    return RoShamCSharp.Properties.Resources.p1Rock;
-                    break;
+                    return RoShamCSharp.Properties.Resources.p1Rock;;
                 }
                 case "paper":
                 {
                     return RoShamCSharp.Properties.Resources.p1Paper;
-                    break;
                 }
                 case "scissors":
                 {
                     return RoShamCSharp.Properties.Resources.p1Scissors;
-                    break;
                 }
                 default:
                 {
                     return null;
                 }
             }
-
         }
 
         public static Image p2Picture(string p2Option)
@@ -92,18 +90,18 @@ namespace RoShamCSharp
                 case "rock":
                 {
                     return RoShamCSharp.Properties.Resources.p2Rock;
-                    break;
                 }
+
                 case "paper":
                 {
                     return RoShamCSharp.Properties.Resources.p2Paper;
-                    break;
                 }
+
                 case "scissors":
                 {
                     return RoShamCSharp.Properties.Resources.p2Scissors;
-                    break;
                 }
+
                 default:
                 {
                     return null;
@@ -116,34 +114,34 @@ namespace RoShamCSharp
             {
                 case "rock":
                     Rock rock = new Rock();
-                    int[] rockstat = new int[]
+                    int[] rockstat =
                     {
                         rock.health,
                         rock.attack,
                         rock.defence
                     };
                     return rockstat;
-                    break;
 
                 case "paper":
                     Paper paper = new Paper();
-                    int[] papstat = new int[]
+                    int[] papstat = 
                     {
                         paper.health,
                         paper.attack,
                         paper.defence
                     };
                     return papstat;
-                    break;
+
                 case "scissors":
                     Scissors scissors = new Scissors();
-                    int[] scissstat = new int[]
+                    int[] scissstat = 
                     {
                         scissors.health,
                         scissors.attack,
                         scissors.defence
                     };
                     return scissstat;
+
                 default:
                     return null;
             }

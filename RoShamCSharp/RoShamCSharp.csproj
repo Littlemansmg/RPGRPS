@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\frmFormatting.cs" />
     <Compile Include="Classes\Moves.cs" />
     <Compile Include="Classes\Paper.cs" />
     <Compile Include="Classes\Rock.cs" />

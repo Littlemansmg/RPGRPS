@@ -528,15 +528,17 @@
             this.lblP2Health.Size = new System.Drawing.Size(75, 21);
             this.lblP2Health.TabIndex = 32;
             this.lblP2Health.Text = "Health: ";
+            this.lblP2Health.Visible = false;
             // 
             // lblTab3win
             // 
             this.lblTab3win.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTab3win.Location = new System.Drawing.Point(227, 245);
+            this.lblTab3win.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTab3win.Location = new System.Drawing.Point(219, 245);
             this.lblTab3win.Name = "lblTab3win";
-            this.lblTab3win.Size = new System.Drawing.Size(143, 101);
+            this.lblTab3win.Size = new System.Drawing.Size(117, 40);
             this.lblTab3win.TabIndex = 33;
-            this.lblTab3win.Text = "88888";
+            this.lblTab3win.Visible = false;
             // 
             // frmMain
             // 

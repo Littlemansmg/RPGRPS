@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RoShamCSharp.Classes;
 
 //ROSHAMCSHARP developed by Scott Goes
 //This program is a more improved version of my roshambo game
@@ -18,13 +20,21 @@ namespace RoShamCSharp
     {
         #region Vars
 
+        //Object creation
         private Random random = new Random();
         private Moves moves = new Moves();
+        private frmFormatting matFor = new frmFormatting();
+
+        //arrays
         public int[] p1Fighter = new int[3];
         public int[] p2Fighter = new int[3];
         private string[] options = { "Rock", "Paper", "Scissors" };
+
+        //possibly use formatting class to eliminate this code.
         private int tab1win1count = 0, tab1win2count = 0, tab1tieCount = 0;
         private int tab2win1count = 0, tab2win2count = 0, tab2tieCount = 0;
+
+        //initalize
         private string aiChoice = "";
         private string p1Option = "";
 
@@ -81,16 +91,14 @@ namespace RoShamCSharp
         /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //This is an exit button. 
             this.Close();
         }
-
+        
+        #region AiGame
         /// <summary>
         /// This only plays the AI game, no player input required.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        #region AiGame
+
         private void btnAi_Click(object sender, EventArgs e)
         {
             //vars needed to run the game
@@ -102,8 +110,8 @@ namespace RoShamCSharp
             picTab1p2.Image = GameLogic.p2Picture(a2Choice);
 
             //sets what the player picked and determines the winner
-            lblTab1p1pick.Text = "Player 1 pick: " + aiChoice;
-            lblTab1p2pick.Text = "Player 2 pick: " + a2Choice;
+            lblTab1p1pick.Text = matFor.strP1Pick(aiChoice);
+            lblTab1p2pick.Text = matFor.strP2Pick(a2Choice);
 
             switch (GameLogic.pickWin(aiChoice, a2Choice))
             {
@@ -126,6 +134,8 @@ namespace RoShamCSharp
         }
 
         #endregion
+        
+        #region PlayerGame
 
         /// <summary>
         /// This tab allows 1vai or 1v1 game.
@@ -134,9 +144,7 @@ namespace RoShamCSharp
         /// Having the 1v1 really isn't that great because both
         /// users can see the others pick, but I have it in because.
         /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        #region PlayerGame
+        
         private void btnGame_Click(object sender, EventArgs e)
         {
             string player1Choice;
@@ -158,8 +166,8 @@ namespace RoShamCSharp
                     player2Choice = options[cboPlayer2.SelectedIndex - 2];
                 }
 
-                lblTab2p1pick.Text = "Player 1 pick: " + player1Choice;
-                lblTab2p2pick.Text = "Player 2 pick: " + player2Choice;
+                lblTab2p1pick.Text = matFor.strP1Pick(player1Choice);
+                lblTab2p2pick.Text = matFor.strP1Pick(player2Choice);
 
                 picTab2p1.Image = GameLogic.p1Picture(player1Choice);
                 picTab2p2.Image = GameLogic.p2Picture(player2Choice);
@@ -179,13 +187,14 @@ namespace RoShamCSharp
                         lblTab2Tie.Text = "Ties: " + tab2tieCount;
                         break;
                 }
-
                 lblTab2Win.Text = GameLogic.pickWin(player1Choice, player2Choice);
                 lblTab2Win.Visible = true;
             }
         }
 
         #endregion
+        
+        #region Battle Game
 
         /// <summary>
         /// Pokemon style battle between user and ai
@@ -193,10 +202,7 @@ namespace RoShamCSharp
         /// <remarks>
         /// ***1 PERSON ONLY FOR CONVIENCE***
         /// </remarks>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        #region Battle Game
-
+        
         private void cboTab3P1Pick_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -206,6 +212,7 @@ namespace RoShamCSharp
             catch (IndexOutOfRangeException)
             {
             }
+
             if (cboTab3P1Pick.SelectedIndex == 0)
             {
                 picTab3p1.Visible = false;
@@ -216,7 +223,6 @@ namespace RoShamCSharp
                 picTab3p1.Image = GameLogic.p1Picture(p1Option);
                 picTab3p1.Visible = true;
             }
-            
         }
         
         private void btnBattle_Click(object sender, EventArgs e)
@@ -226,24 +232,20 @@ namespace RoShamCSharp
                 return;
             }
 
-            cboTab3P1Pick.Enabled = false;
-            btnBattle.Visible = false;
-            grpMove.Visible = true;
+            startGame();
+
             aiChoice = options[random.Next(0, 3)];
             picTab3p2.Image = GameLogic.p2Picture(aiChoice);
-            lblTab3p2pick.Text = "Player 2 Pick: " + aiChoice;
+            lblTab3p2pick.Text = matFor.strP2Pick(aiChoice);
 
             //[health, attack, defence]
             p1Fighter = GameLogic.getFighter(p1Option);
             p2Fighter = GameLogic.getFighter(aiChoice);
 
-            lblP1Health.Text = "Health: " + p1Fighter[0];
-            lblP2Health.Text = "Health: " + p2Fighter[0];
-
-            lblTab3win.Visible = false;
-
-
+            lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
+            lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
         }
+
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             int[] moveOption =
@@ -257,14 +259,12 @@ namespace RoShamCSharp
             if (checkMove() == 0)
             {
                 p2Fighter[0] = p2Fighter[0] - moveOption[0];
-                lblP2Health.Text = "Health: " + p2Fighter[0];
+                lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
                 lblTab3win.Text = GameLogic.battleWin(p1Fighter[0], p2Fighter[0]);
+
                 if (!string.IsNullOrEmpty(lblTab3win.Text))
                 {
-                    lblTab3win.Visible = true;
-                    grpMove.Visible = false;
-                    btnBattle.Visible = true;
-                    cboTab3P1Pick.Enabled = true;
+                    resetGame();
                 }
             }
         }
@@ -289,6 +289,27 @@ namespace RoShamCSharp
             }
         }
 
+        private void startGame()
+        {
+            cboTab3P1Pick.Enabled = false;
+            btnBattle.Visible = false;
+            grpMove.Visible = true;
+            lblP2Health.Visible = true;
+            lblTab3win.Visible = false;
+        }
+
+        private void resetGame()
+        {
+            grpMove.Visible = false;
+            lblTab3win.Visible = true;
+            btnBattle.Visible = true;
+            cboTab3P1Pick.Enabled = true;
+            picTab3p1.Image = null;
+            picTab3p2.Image = null;
+            lblP2Health.Visible = false;
+        }
+
         #endregion
+
     } 
 }
