@@ -7,59 +7,8 @@ using System.Threading.Tasks;
 
 namespace RoShamCSharp
 {
-    public static class GameLogic
+    public static class StaticLogic
     {  
-        public static string pickWin(string p1Option, string p2Option)
-        {
-            switch (p1Option.ToLower())
-            {
-                case "rock":
-                    if (p2Option.ToLower() == "paper")
-                    {
-                        return "Player 2 Wins!";
-                    }
-                    else if (p1Option == p2Option)
-                    {
-                        return "It's a tie!";
-                    }
-                    else
-                    {
-                        return "Player 1 Wins!";
-                    }
-
-                case "paper":
-                    if (p2Option.ToLower() == "scissors")
-                    {
-                        return "Player 2 Wins!";
-                    }
-                    else if (p1Option == p2Option)
-                    {
-                        return "It's a tie!";
-                    }
-                    else
-                    {
-                        return "Player 1 Wins!";
-                    }
-
-                case "scissors":
-                    if (p2Option.ToLower() == "rock")
-                    {
-                        return "Player 2 Wins!";
-                    }
-                    else if (p1Option == p2Option)
-                    {
-                        return "It's a tie!";
-                    }
-                    else
-                    {
-                        return "Player 1 Wins!";
-                    }
-
-                default:
-                    return "Something went wrong here.";
-            }
-        }
-
         public static Image p1Picture(string p1Option)
         {
             switch (p1Option.ToLower())
@@ -144,6 +93,57 @@ namespace RoShamCSharp
 
                 default:
                     return null;
+            }
+        }
+
+        public static string pickWin(string p1Option, string p2Option)
+        {
+            switch (p1Option.ToLower())
+            {
+                case "rock":
+                    if (p2Option.ToLower() == "paper")
+                    {
+                        return "Player 2 Wins!";
+                    }
+                    else if (p1Option == p2Option)
+                    {
+                        return "It's a tie!";
+                    }
+                    else
+                    {
+                        return "Player 1 Wins!";
+                    }
+
+                case "paper":
+                    if (p2Option.ToLower() == "scissors")
+                    {
+                        return "Player 2 Wins!";
+                    }
+                    else if (p1Option == p2Option)
+                    {
+                        return "It's a tie!";
+                    }
+                    else
+                    {
+                        return "Player 1 Wins!";
+                    }
+
+                case "scissors":
+                    if (p2Option.ToLower() == "rock")
+                    {
+                        return "Player 2 Wins!";
+                    }
+                    else if (p1Option == p2Option)
+                    {
+                        return "It's a tie!";
+                    }
+                    else
+                    {
+                        return "Player 1 Wins!";
+                    }
+
+                default:
+                    return "Something went wrong here.";
             }
         }
 

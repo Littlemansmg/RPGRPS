@@ -9,8 +9,11 @@ namespace RoShamCSharp
 {
     public class Moves
     {
+        Rock rock = new Rock();
+        Paper paper = new Paper();
+        Scissors scissors = new Scissors();
         Random random = new Random();
-        public int tackle()
+        public object tackle()
         {
             //string name = "Tackle";
             int damage = random.Next(3,10) ;
@@ -23,13 +26,25 @@ namespace RoShamCSharp
             }
             else
             {
-                return 0;
+                return "Tackle Missed!";
             }
         }
 
-        public int defence()
+        public int defence(string fighter)
         {
-            return 1;
+            switch (fighter.ToLower())
+            {
+                case "rock":
+                    return rock.defence;
+
+                case "paper":
+                    return paper.defence;
+
+                case "scissors":
+                    return scissors.defence;
+                default:
+                    return 0;
+            }
         }
 
         public int heal()

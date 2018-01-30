@@ -50,7 +50,7 @@
     <Compile Include="Classes\Moves.cs" />
     <Compile Include="Classes\Paper.cs" />
     <Compile Include="Classes\Rock.cs" />
-    <Compile Include="Classes\GameLogic.cs" />
+    <Compile Include="Classes\StaticLogic.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

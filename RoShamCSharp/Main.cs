@@ -106,14 +106,14 @@ namespace RoShamCSharp
             string a2Choice = options[random.Next(0, 3)];
 
             //determines picture based on what the AI picked
-            picTab1p1.Image = GameLogic.p1Picture(aiChoice);
-            picTab1p2.Image = GameLogic.p2Picture(a2Choice);
+            picTab1p1.Image = StaticLogic.p1Picture(aiChoice);
+            picTab1p2.Image = StaticLogic.p2Picture(a2Choice);
 
             //sets what the player picked and determines the winner
             lblTab1p1pick.Text = matFor.strP1Pick(aiChoice);
             lblTab1p2pick.Text = matFor.strP2Pick(a2Choice);
 
-            switch (GameLogic.pickWin(aiChoice, a2Choice))
+            switch (StaticLogic.pickWin(aiChoice, a2Choice))
             {
                 case "Player 1 Wins!":
                     tab1win1count++;
@@ -129,7 +129,7 @@ namespace RoShamCSharp
                     break;
             }
 
-            lblTab1Win.Text = GameLogic.pickWin(aiChoice, a2Choice);
+            lblTab1Win.Text = StaticLogic.pickWin(aiChoice, a2Choice);
             lblTab1Win.Visible = true;
         }
 
@@ -169,10 +169,10 @@ namespace RoShamCSharp
                 lblTab2p1pick.Text = matFor.strP1Pick(player1Choice);
                 lblTab2p2pick.Text = matFor.strP1Pick(player2Choice);
 
-                picTab2p1.Image = GameLogic.p1Picture(player1Choice);
-                picTab2p2.Image = GameLogic.p2Picture(player2Choice);
+                picTab2p1.Image = StaticLogic.p1Picture(player1Choice);
+                picTab2p2.Image = StaticLogic.p2Picture(player2Choice);
 
-                switch (GameLogic.pickWin(player1Choice, player2Choice))
+                switch (StaticLogic.pickWin(player1Choice, player2Choice))
                 {
                     case "Player 1 Wins!":
                         tab2win1count++;
@@ -187,7 +187,7 @@ namespace RoShamCSharp
                         lblTab2Tie.Text = "Ties: " + tab2tieCount;
                         break;
                 }
-                lblTab2Win.Text = GameLogic.pickWin(player1Choice, player2Choice);
+                lblTab2Win.Text = StaticLogic.pickWin(player1Choice, player2Choice);
                 lblTab2Win.Visible = true;
             }
         }
@@ -220,7 +220,7 @@ namespace RoShamCSharp
             }
             else
             {
-                picTab3p1.Image = GameLogic.p1Picture(p1Option);
+                picTab3p1.Image = StaticLogic.p1Picture(p1Option);
                 picTab3p1.Visible = true;
             }
         }
@@ -235,12 +235,12 @@ namespace RoShamCSharp
             startGame();
 
             aiChoice = options[random.Next(0, 3)];
-            picTab3p2.Image = GameLogic.p2Picture(aiChoice);
+            picTab3p2.Image = StaticLogic.p2Picture(aiChoice);
             lblTab3p2pick.Text = matFor.strP2Pick(aiChoice);
 
             //[health, attack, defence]
-            p1Fighter = GameLogic.getFighter(p1Option);
-            p2Fighter = GameLogic.getFighter(aiChoice);
+            p1Fighter = StaticLogic.getFighter(p1Option);
+            p2Fighter = StaticLogic.getFighter(aiChoice);
 
             lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
             lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
@@ -248,24 +248,12 @@ namespace RoShamCSharp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            int[] moveOption =
-            {
-                moves.tackle(),
-                moves.defence(),
-                moves.heal(),
-                moves.giveup()
-            };
+            playerMove(checkMove());
+            aiMove();
 
-            if (checkMove() == 0)
+            if (!string.IsNullOrEmpty(lblTab3win.Text))
             {
-                p2Fighter[0] = p2Fighter[0] - moveOption[0];
-                lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
-                lblTab3win.Text = GameLogic.battleWin(p1Fighter[0], p2Fighter[0]);
-
-                if (!string.IsNullOrEmpty(lblTab3win.Text))
-                {
-                    resetGame();
-                }
+                resetGame();
             }
         }
 
@@ -289,6 +277,64 @@ namespace RoShamCSharp
             }
         }
 
+        private void playerMove(int moveChoice)
+        {
+            object[] moveOption =
+            {
+                moves.tackle(),
+                moves.defence(p1Option),
+                moves.heal(),
+                moves.giveup()
+            };
+
+            switch (moveChoice)
+            {
+                case 0:
+                    if (moveOption[moveChoice] is int)
+                    {
+                        p2Fighter[0] = p2Fighter[0] - Convert.ToInt16(moveOption[0]);
+                        lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
+                        lblTab3win.Text = StaticLogic.battleWin(p1Fighter[0], p2Fighter[0]);
+                        lblStatus.Text = matFor.tackle(Convert.ToInt16(moveOption[0]));
+
+                    }
+                    else
+                    {
+                        lblStatus.Text = Convert.ToString(moveOption[0]);
+                    }
+                    break;
+            }
+        }
+
+        private void aiMove()
+        {
+            object[] moveOption =
+            {
+                moves.tackle(),
+                moves.defence(aiChoice)
+                //moves.heal()
+            };
+
+            object pickMove = moveOption[0 /*random.Next(0, 4)*/];
+
+            if (pickMove is int)
+            {
+                p1Fighter[0] = p1Fighter[0] - Convert.ToInt16(pickMove);
+                lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
+                lblTab3win.Text = StaticLogic.battleWin(p1Fighter[0], p2Fighter[0]);
+                lblAi.Text = matFor.tackle(Convert.ToInt16(moveOption[0]));
+            }
+            else
+            {
+                lblAi.Text = Convert.ToString(moveOption[0]);
+            }
+
+            if (!string.IsNullOrEmpty(lblTab3win.Text))
+            {
+                resetGame();
+            }
+        }
+
         private void startGame()
         {
             cboTab3P1Pick.Enabled = false;
@@ -296,6 +342,8 @@ namespace RoShamCSharp
             grpMove.Visible = true;
             lblP2Health.Visible = true;
             lblTab3win.Visible = false;
+            lblStatus.Visible = true;
+            lblAi.Visible = true;
         }
 
         private void resetGame()
@@ -304,9 +352,15 @@ namespace RoShamCSharp
             lblTab3win.Visible = true;
             btnBattle.Visible = true;
             cboTab3P1Pick.Enabled = true;
+            cboTab3P1Pick.SelectedIndex = 0;
             picTab3p1.Image = null;
             picTab3p2.Image = null;
+            lblTab3p2pick.Text = matFor.strP2Pick(null);
             lblP2Health.Visible = false;
+            lblStatus.Visible = false;
+            lblStatus.Text = null;
+            lblAi.Visible = false;
+            lblAi.Text = null;
         }
 
         #endregion
