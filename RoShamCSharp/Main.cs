@@ -242,8 +242,16 @@ namespace RoShamCSharp
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            playerMove(checkMove());
-            aiMove();
+            if (checkMove() != 3)
+            {
+                playerMove(checkMove());
+                aiMove();
+            }
+            else
+            {
+                lblTab3win.Text = "You gave up.";
+            }
+            
 
             if (!string.IsNullOrEmpty(lblTab3win.Text))
             {
@@ -265,10 +273,11 @@ namespace RoShamCSharp
             {
                 return 2;
             }
-            else
+            else if(rdoLolRip.Checked)
             {
                 return 3;
             }
+            return 4;
         }
 
         private void playerMove(int moveChoice)
@@ -305,7 +314,7 @@ namespace RoShamCSharp
                     }
                     lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
                     break;
-
+                
             }
         }
 
@@ -358,8 +367,10 @@ namespace RoShamCSharp
             cboTab3P1Pick.Enabled = false;
             btnBattle.Visible = false;
             grpMove.Visible = true;
+            rdoTackle.Checked = true;
             lblP2Health.Visible = true;
             lblTab3win.Visible = false;
+            lblTab3win.Text = null;
             lblStatus.Visible = true;
             lblAi.Visible = true;
         }
