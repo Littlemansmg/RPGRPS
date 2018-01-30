@@ -32,5 +32,10 @@ namespace RoShamCSharp.Classes
             return tackle;
         }
 
+        public string heal(int healing)
+        {
+            String heal = string.Format("Gained {0} health!", healing);
+            return heal;
+        }
     }
 }

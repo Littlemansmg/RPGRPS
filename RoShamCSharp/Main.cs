@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Resources;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using RoShamCSharp.Classes;
+using RoShamCSharp.Classes.Moves;
+
 
 //ROSHAMCSHARP developed by Scott Goes
 //This program is a more improved version of my roshambo game
@@ -296,13 +290,22 @@ namespace RoShamCSharp
                         lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
                         lblTab3win.Text = StaticLogic.battleWin(p1Fighter[0], p2Fighter[0]);
                         lblStatus.Text = matFor.tackle(Convert.ToInt16(moveOption[0]));
-
                     }
                     else
                     {
                         lblStatus.Text = Convert.ToString(moveOption[0]);
                     }
                     break;
+                case 2:
+                    lblStatus.Text = matFor.heal(Convert.ToInt16(moveOption[2]));
+                    p1Fighter[0] += Convert.ToInt16(moveOption[2]);
+                    if (p1Fighter[0] > 60)
+                    {
+                        p1Fighter[0] = 60;
+                    }
+                    lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
+                    break;
+
             }
         }
 
@@ -311,22 +314,37 @@ namespace RoShamCSharp
             object[] moveOption =
             {
                 moves.tackle(),
-                moves.defence(aiChoice)
-                //moves.heal()
+                //moves.defence(aiChoice)
+                moves.heal()
             };
 
-            object pickMove = moveOption[0 /*random.Next(0, 4)*/];
+            int pickMove = random.Next(0, 2); /*random.Next(0, 2)*/
 
-            if (pickMove is int)
+            switch (pickMove)
             {
-                p1Fighter[0] = p1Fighter[0] - Convert.ToInt16(pickMove);
-                lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
-                lblTab3win.Text = StaticLogic.battleWin(p1Fighter[0], p2Fighter[0]);
-                lblAi.Text = matFor.tackle(Convert.ToInt16(moveOption[0]));
-            }
-            else
-            {
-                lblAi.Text = Convert.ToString(moveOption[0]);
+                case 0:
+                    if (moveOption[pickMove] is int)
+                    {
+                        p1Fighter[0] = p1Fighter[0] - Convert.ToInt16(moveOption[0]);
+                        lblP1Health.Text = matFor.strHealth(p1Fighter[0]);
+                        lblTab3win.Text = StaticLogic.battleWin(p1Fighter[0], p2Fighter[0]);
+                        lblAi.Text = matFor.tackle(Convert.ToInt16(moveOption[0]));
+                    }
+                    else
+                    {
+                        lblAi.Text = Convert.ToString(moveOption[0]);
+                    }
+                    break;
+                case 1:
+                    lblAi.Text = matFor.heal(Convert.ToInt16(moveOption[1]));
+                    p2Fighter[0] += Convert.ToInt16(moveOption[1]);
+                    if (p2Fighter[0] > 60)
+                    {
+                        p2Fighter[0] = 60;
+                    }
+                    lblP2Health.Text = matFor.strHealth(p2Fighter[0]);
+                    break;
+
             }
 
             if (!string.IsNullOrEmpty(lblTab3win.Text))

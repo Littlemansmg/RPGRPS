@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoShamCSharp.Classes
+namespace RoShamCSharp.Classes.Moves
 {
-    class Class1
+    public class MoveLogic
     {
+
     }
 }

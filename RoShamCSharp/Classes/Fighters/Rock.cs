@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoShamCSharp
+namespace RoShamCSharp.Classes.Fighters
 {
     public class Rock
     {

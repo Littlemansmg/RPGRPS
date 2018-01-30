@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RoShamCSharp.Classes.Fighters;
 
-namespace RoShamCSharp
+namespace RoShamCSharp.Classes.Moves
 {
     public class Moves
     {
@@ -32,24 +33,13 @@ namespace RoShamCSharp
 
         public int defence(string fighter)
         {
-            switch (fighter.ToLower())
-            {
-                case "rock":
-                    return rock.defence;
-
-                case "paper":
-                    return paper.defence;
-
-                case "scissors":
-                    return scissors.defence;
-                default:
-                    return 0;
-            }
+            return 0;
         }
 
         public int heal()
         {
-            return 1;
+            int heal = random.Next(1, 5);
+            return heal;
         }
 
         public int giveup()
