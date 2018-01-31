@@ -16,12 +16,9 @@ namespace RoShamCSharp
 
         //Object creation
         private Random random = new Random();
-        private Moves moves = new Moves();
         private frmFormatting matFor = new frmFormatting();
 
         //arrays
-        public int[] p1Fighter = new int[3];
-        public int[] p2Fighter = new int[3];
         private string[] options = { "Rock", "Paper", "Scissors" };
 
         //possibly use formatting class to eliminate this code.
@@ -187,8 +184,16 @@ namespace RoShamCSharp
         }
 
         #endregion
-        
+
         #region Battle Game
+
+        #region BattleVars
+
+        private Moves moves = new Moves();
+        public int[] p1Fighter = new int[3];
+        public int[] p2Fighter = new int[3];
+
+        #endregion
 
         /// <summary>
         /// Pokemon style battle between user and ai
@@ -196,7 +201,7 @@ namespace RoShamCSharp
         /// <remarks>
         /// ***1 PERSON ONLY FOR CONVIENCE***
         /// </remarks>
-        
+
         private void cboTab3P1Pick_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
